@@ -28,7 +28,7 @@ class RNNTracker:
             trk = self.tracks[tid]
             with torch.no_grad():
                 # Preparar tensor: (batch=1, seq_len=1, 4)
-                x_in = torch.tensor([[trk['last_box']]]) / 1000.0
+                x_in = (torch.from_numpy(np.array([[trk["last_box"]]], dtype=np.float32)) / 1000.0)
                 x_in = x_in.to(self.device).float()
                 
                 pred_out, new_hidden = self.model(x_in, trk['hidden'])

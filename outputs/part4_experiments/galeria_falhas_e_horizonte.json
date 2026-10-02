@@ -1,0 +1,35 @@
+{
+    "trecho_1": {
+        "tipo": "Oclusão Longa por Pedestre Fixo",
+        "frames": "120 a 155",
+        "diagnostico": "Objeto ocluído por 35 quadros. Com BPTT T=16 e norma do gradiente caindo 20x em 8 passos, o modelo em free-running sofre drift e perde o vínculo IoU no reaparecimento."
+    },
+    "trecho_2": {
+        "tipo": "Mudança Abrupta de Velocidade",
+        "frames": "210 a 230",
+        "diagnostico": "Pedestre reduz a marcha abruptamente. A LSTM projeta a caixa à frente por inércia linear, gerando ID Switch ao reaparecer a detecção estática."
+    },
+    "trecho_3": {
+        "tipo": "Interseção Cruzada de Pedestres (Cross-over)",
+        "frames": "300 a 315",
+        "diagnostico": "Dois pedestres se cruzam. A matriz de custo IoU puramente geométrica torna-se ambígua durante o overlap, trocando as identidades na saída."
+    },
+    "comparacao_correcao": {
+        "antes": {
+            "IDF1": 0.5567424018884627,
+            "IDTP": "4717",
+            "IDFP": "2792",
+            "IDFN": "4719",
+            "IDSW": 493,
+            "Frag": 146
+        },
+        "depois": {
+            "IDF1": 0.5737385659486575,
+            "IDTP": "4861",
+            "IDFP": "2648",
+            "IDFN": "4575",
+            "IDSW": 327,
+            "Frag": 177
+        }
+    }
+}
